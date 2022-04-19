@@ -1,12 +1,11 @@
 package com.costanzopa
 
-import io.ktor.server.engine.*
-import io.ktor.server.jetty.*
 import com.costanzopa.plugins.*
+import io.ktor.server.application.*
 
-fun main() {
-    embeddedServer(Jetty, port = 8080, host = "0.0.0.0") {
-        configureRouting()
-        configureSerialization()
-    }.start(wait = true)
+fun main(args: Array<String>): Unit = io.ktor.server.jetty.EngineMain.main(args)
+
+fun Application.module() {
+    configureRouting()
+    configureSerialization()
 }
